@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+const host = "https://cirrusnotes-backend.onrender.com/";
 
 const Signup = (props) => {
   const [credentials, setCredentials] = useState({
@@ -11,22 +12,19 @@ const Signup = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { name, email, password } = credentials;
- 
+
     try {
-      const response = await fetch(
-        "http://localhost:5000/api/v1/auth/createuser",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: name,
-            email: email,
-            password: password,
-          }),
-        }
-      );
+      const response = await fetch(`${host}/api/v1/auth/createuser`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          password: password,
+        }),
+      });
 
       const json = await response.json();
       if (json.success) {
@@ -58,8 +56,6 @@ const Signup = (props) => {
   const onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
-
-
 
   return (
     <div className="container d-flex ">

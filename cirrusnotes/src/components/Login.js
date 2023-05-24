@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+const host = "https://cirrusnotes-backend.onrender.com/";
 
 const Login = (props) => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -7,7 +8,7 @@ const Login = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/v1/auth/login", {
+    const response = await fetch(`${host}/api/v1/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -17,7 +18,7 @@ const Login = (props) => {
         password: credentials.password,
       }),
     });
-    const json = await response.json(); 
+    const json = await response.json();
     if (json.success) {
       // Save the auth token and redirect
       localStorage.setItem("token", json.authtoken);
