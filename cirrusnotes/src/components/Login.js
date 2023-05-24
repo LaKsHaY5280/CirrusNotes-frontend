@@ -18,11 +18,17 @@ const Login = (props) => {
         password: credentials.password,
       }),
     });
+    const contentType = response.headers.get("Content-Type");
+    if (contentType && !contentType.includes("application/json")) {
+      console.error("Server returned non-JSON response:", response);
+      props.toggleAlert("warning", "Server error");
+      return;
+    }
     const json = await response.json();
     if (json.success) {
       // Save the auth token and redirect
       localStorage.setItem("token", json.authtoken);
-      props.toggleAlert("success", "Loginp complete");
+      props.toggleAlert("success", "Login complete");
       navigate("/");
     } else if (
       response.status === 400 &&
@@ -41,6 +47,7 @@ const Login = (props) => {
       props.toggleAlert("warning", "Invalid credentials");
     }
   };
+  
 
   const onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
