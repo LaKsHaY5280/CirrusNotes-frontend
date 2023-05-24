@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-const host = "https://cirrusnotes-backend.onrender.com/";
+const host = "https://cirrusnotes-backend.onrender.com";
 
 const Signup = (props) => {
   const [credentials, setCredentials] = useState({
