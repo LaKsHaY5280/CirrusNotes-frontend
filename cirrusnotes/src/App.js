@@ -36,18 +36,6 @@ function App() {
             />
             <Route
               exact
-              path="/CirrusNotes"
-              key="general"
-              element={<Home toggleAlert={toggleAlert} />}
-            />
-            <Route
-              exact
-              path="/home"
-              key="general"
-              element={<Home toggleAlert={toggleAlert} />}
-            />
-            <Route
-              exact
               path="/login"
               key="general"
               element={<Login toggleAlert={toggleAlert} />}
