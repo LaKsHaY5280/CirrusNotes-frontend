@@ -99,17 +99,6 @@ const Signup = (props) => {
             />
             <label htmlFor="floatingPassword ">Password</label>
           </div>
-          <div className="form-floating mb-3">
-            <input
-              type="password"
-              className="form-control"
-              id="cpassword"
-              name="cpassword"
-              placeholder="cPassword"
-              onChange={onChange}
-            />
-            <label htmlFor="floatingPassword">Confirm password</label>
-          </div>
           <div className="container d-flex my-3">
             <button type="submit" className="btn btn-primary">
               Submit
